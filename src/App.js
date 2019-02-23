@@ -94,6 +94,7 @@ function DeezerConnection(hasChanged) {
               return obj[prop];
             })
             .catch(error => {
+              obj[prop].loading = false;
               obj[prop].error = error;
               setTimeout(() => hasChanged(store));
             });
