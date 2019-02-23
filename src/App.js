@@ -51,7 +51,7 @@ class App extends Component {
           {this.state.selectedArtist && (
             <div className="artist-detail--container">
               <p className="title-2 artist-detail--name">
-                Search results for "{this.state.selectedArtist.name.value}"
+                Search results for "{this.state.selectedArtist.name}"
               </p>
               <div className="artist-detail--albums">
                 <p className="title blue-font">Albums</p>
@@ -83,15 +83,7 @@ function DeezerConnection(hasChanged) {
     store[generateKey({ id, type })] = new Proxy(data, {
       get: (obj, prop) => {
         if (obj[prop]) {
-          if (obj[prop] && obj[prop].loading) {
-            return {
-              loading: true,
-              value: []
-            };
-          }
-          return {
-            value: obj[prop]
-          };
+          return obj[prop];
         }
         if (!obj[prop] || !obj[prop].loading) {
           fetch(`/${obj.type}/${obj.id}/${prop}/`)
@@ -102,16 +94,14 @@ function DeezerConnection(hasChanged) {
               return obj[prop];
             })
             .catch(error => {
-              obj[prop] = {
-                error
-              };
+              obj[prop].error = error;
               setTimeout(() => hasChanged(store));
             });
         }
-        obj[prop] = {
-          loading: true
-        };
-        return { loading: true, value: [] };
+        const some = [];
+        some.loading = true;
+        obj[prop] = some;
+        return obj[prop];
       }
     });
     return store[generateKey({ id, type })];

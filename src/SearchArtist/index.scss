@@ -32,6 +32,7 @@
 //Dropdown
 .search-artist--dropdown {
   position: absolute;
+  z-index: 100;
   top: 4em;
   background-color: $gray2;
   padding: $size-1;

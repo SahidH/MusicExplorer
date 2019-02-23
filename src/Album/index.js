@@ -15,10 +15,10 @@ const Album = ({
   >
     <img
       className="album-cover__image"
-      title={album.title.value}
-      src={album[`cover_${size}`].value}
+      title={album.title}
+      src={album[`cover_${size}`]}
     />
-    {displayTitle && <p className="album-cover__title">{album.title.value}</p>}
+    {displayTitle && <p className="album-cover__title">{album.title}</p>}
   </div>
 );
 export default Album;

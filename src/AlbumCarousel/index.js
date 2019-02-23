@@ -7,10 +7,10 @@ const AlbumCarousel = ({ albums, selectedAlbum, onAlbumSelected }) => (
       <div
         className="albums-scroll__container"
         style={{
-          width: `${albums.value.length * (10 + 0.6 * 2)}em`
+          width: `${albums.length * (10 + 0.6 * 2)}em`
         }}
       >
-        {albums.value.map(album => (
+        {albums.map(album => (
           <Album
             album={album}
             onAlbumSelected={onAlbumSelected}

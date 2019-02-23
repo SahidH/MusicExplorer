@@ -8,7 +8,7 @@ const formatTime = time => {
 };
 const AlbumDetail = ({ album }) => (
   <div className="album-detail">
-    <p className="album-detail__track-list__title title">{album.title.value}</p>
+    <p className="album-detail__track-list__title title">{album.title}</p>
     <div className="album-detail__track-list">
       <Album
         displayTitle={false}
@@ -33,22 +33,22 @@ const AlbumDetail = ({ album }) => (
           </p>
         </div>
         {!album.tracks.loading &&
-          album.tracks.value.map((track, i) => (
+          album.tracks.map((track, i) => (
             <div className="table__row">
               <p className="table__row__number">
                 {i + 1}
               </p>
               <p className="offset-table__element table__row__title">
-                {track.title.value}
+                {track.title}
               </p>
               <p className="offset-table__element table__row__artist">
-                {track.artist.value.name}
+                {track.artist.name}
               </p>
               <p className="offset-table__element table__row__duration">
-                {formatTime(track.duration.value)}
+                {formatTime(track.duration)}
               </p>
               <p className="offset-table__element table__row__release-date">
-                {album.release_date.value}
+                {album.release_date}
               </p>
             </div>
           ))}

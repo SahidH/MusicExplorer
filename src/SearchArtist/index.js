@@ -19,7 +19,7 @@ const SearchArtist = ({ artists, onSearchArtist, onArtistSelected }) => (
                   className="search-artist--dropdown--element-text"
                   onClick={() => onArtistSelected(artist)}
                 >
-                  {artist.name.value}
+                  {artist.name}
                 </p>
               </div>
             ))}
