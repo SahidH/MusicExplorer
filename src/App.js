@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Grommet, Box, Text, Drop, TextInput, Image } from "grommet";
-const theme = {
-  global: {
-    font: {
-      family: "Roboto",
-      size: "14px",
-      height: "20px"
-    }
-  }
-};
+import "./App.scss";
+import SearchArtist from "./SearchArtist";
+import AlbumCarousel from "./AlbumCarousel";
+import AlbumDetail from "./AlbumDetail";
 class App extends Component {
   constructor() {
     super();
@@ -18,6 +10,7 @@ class App extends Component {
     this.myDeezerConnection = DeezerConnection(this.loop);
     this.onSearchArtist = this.onSearchArtist.bind(this);
     this.onArtistSelected = this.onArtistSelected.bind(this);
+    this.onAlbumSelected = this.onAlbumSelected.bind(this);
     this.state = {
       thick: false,
       artists: []
@@ -38,14 +31,17 @@ class App extends Component {
   }
 
   onArtistSelected(artist) {
-    console.log("artist", artist);
     this.setState({ selectedArtist: artist, artists: [] });
+  }
+
+  onAlbumSelected(album) {
+    this.setState({ selectedAlbum: album });
   }
 
   render() {
     return (
-      <Grommet theme={theme}>
-        <Box fill={true} flex="grow" pad="medium">
+      <div className="app">
+        <div className="app-container">
           <SearchArtist
             artists={this.state.artists}
             onSearchArtist={this.onSearchArtist}
@@ -53,73 +49,29 @@ class App extends Component {
           />
 
           {this.state.selectedArtist && (
-            <Box pad={{ top: "small" }}>
-              <Text>{this.state.selectedArtist.name.value}</Text>
-              {this.state.selectedArtist.albums.loading && (
-                <div class="spinner">
-                  <div class="cube1" />
-                  <div class="cube2" />
-                </div>
+            <div className="artist-detail--container">
+              <p className="title-2 artist-detail--name">
+                Search results for "{this.state.selectedArtist.name.value}"
+              </p>
+              <div className="artist-detail--albums">
+                <p className="title blue-font">Albums</p>
+                <AlbumCarousel
+                  albums={this.state.selectedArtist.albums}
+                  selectedAlbum={this.state.selectedAlbum}
+                  onAlbumSelected={this.onAlbumSelected}
+                />
+              </div>
+              {this.state.selectedAlbum && (
+                <AlbumDetail album={this.state.selectedAlbum} />
               )}
-              <Box direction="row" wrap={true} pad={{ top: "small" }}>
-                {!this.state.selectedArtist.albums.loading &&
-                  this.state.selectedArtist.albums.value.map(album => (
-                    <Box style={{ width: "200px" }}>
-                      <Box height="small" width="small">
-                        <Image fit="cover" src={album.cover_big.value} />
-                      </Box>
-                      <Text truncate={true}>{album.title.value}</Text>
-                    </Box>
-                  ))}
-              </Box>
-            </Box>
+            </div>
           )}
-        </Box>
-      </Grommet>
+        </div>
+      </div>
     );
   }
 }
-// const SearchArtist = ({ value, options, onSearchArtist, onArtistSelected }) => (
-//   <Select
-//     value={<TextInput value={value} onChange={onSearchArtist} />}
-//     options={options}
-//     onChange={onArtistSelected}
-//   />
-// );
 
-class SearchArtist extends Component {
-  constructor(props) {
-    super(props);
-    this.targetRef = React.createRef();
-  }
-
-  render() {
-    const { artists, onSearchArtist, onArtistSelected } = this.props;
-    return (
-      <Box align="center" justify="center">
-        <TextInput
-          placeholder="Search here"
-          ref={this.targetRef}
-          onChange={onSearchArtist}
-        />
-        {this.targetRef.current && (
-          <Drop
-            align={{ top: "bottom", left: "left" }}
-            target={this.targetRef.current}
-          >
-            {artists.map(artist => (
-              <Box pad="small" style={{ cursor: "pointer" }}>
-                <Text size="small" onClick={() => onArtistSelected(artist)}>
-                  {artist.name.value}
-                </Text>
-              </Box>
-            ))}
-          </Drop>
-        )}
-      </Box>
-    );
-  }
-}
 function DeezerConnection(hasChanged) {
   const store = {};
   function generateKey({ type, id }) {
