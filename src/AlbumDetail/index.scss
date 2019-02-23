@@ -14,7 +14,7 @@
     top: -4em;
   }
 }
-.album-detail__track-list__details {
+.offset-table {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -26,16 +26,16 @@
   color: $blue;
   display: block;
 }
-.album-detail__track-list__details__table.album-detail__track-list__details__table__header {
+.table__row__headers {
   background-color: transparent;
   font-weight: 600;
 }
-.album-detail__track-list__details__table {
+.table__row {
   display: flex;
   padding-left: 14em;
   background-color: $gray2;
 }
-.album-detail__track-list__details__element {
+.offset-table__element {
   padding-bottom: 1em;
   padding-top: 0em;
   margin-bottom: 0em;
@@ -45,7 +45,7 @@
   position: relative;
 }
 
-.album-detail__track-list__details__element::after {
+.offset-table__element::after {
   content: " ";
   position: absolute;
   left: -1.3em;
@@ -55,22 +55,22 @@
   border-style: solid;
   width: 1.3em;
 }
-.album-detail__track-list__details__table__number {
+.table__row__number {
   width: 2.56em;
 }
 
-.album-detail__track-list__details__table__title {
+.table__row__title {
   width: 40%;
 }
 
-.album-detail__track-list__details__table__artist {
+.table__row__artist {
   width: 30%;
 }
 
-.album-detail__track-list__details__table__duration {
+.table__row__duration {
   width: 10%;
 }
 
-.album-detail__track-list__details__table__release-date {
+.table__row__release-date {
   width: 15%;
 }
