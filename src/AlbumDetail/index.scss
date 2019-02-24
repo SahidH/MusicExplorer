@@ -18,6 +18,15 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  .table__row:last-child {
+    padding-bottom: 2.56em;
+    .offset-table__element {
+      border-style: none;
+    }
+    .offset-table__element::after {
+      content: unset;
+    }
+  }
 }
 .album-detail__track-list__title {
   position: absolute;
