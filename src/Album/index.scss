@@ -1,5 +1,6 @@
 @import "../scss-utilities/variables";
 $cover-size: $spacing-300;
+
 .album-cover {
   display: flex;
   flex-direction: column;
@@ -23,7 +24,6 @@ $cover-size: $spacing-300;
 }
 
 .album-cover--selected {
-  
   .album-cover__image {
     box-shadow: 0 4px 4px black;
   }

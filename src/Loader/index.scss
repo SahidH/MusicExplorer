@@ -1,4 +1,5 @@
 @import "../scss-utilities/variables";
+
 .loader {
   position: relative;
   height: 4px;
@@ -7,6 +8,7 @@
   opacity: 0.9;
   overflow: hidden;
 }
+
 .loader:before {
   content: "";
   position: absolute;

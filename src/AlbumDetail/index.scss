@@ -1,4 +1,5 @@
 @import "../scss-utilities/variables";
+
 .album-detail {
   position: relative;
   margin: 0 -$spacing-26 0 -$spacing-26;
@@ -8,12 +9,12 @@
 .album-detail__track-list {
   display: flex;
   flex-direction: row;
-  margin-top: $spacing-300*0.7;
+  margin-top: $spacing-300 * 0.7;
 
   .album-cover {
     position: absolute;
     left: $spacing-26;
-    top: -$spacing-300*0.3;
+    top: -$spacing-300 * 0.3;
   }
 }
 
@@ -39,7 +40,7 @@
   position: absolute;
   display: block;
   left: $spacing-300 + $spacing-26 + $spacing-36 - 2;
-  top: -$spacing-300*0.2;
+  top: -$spacing-300 * 0.2;
   color: $blue;
   font-weight: 600;
   font-size: $font-size-33;

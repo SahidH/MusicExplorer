@@ -1,4 +1,5 @@
 @import "../scss-utilities/variables";
+
 $search-bar-height: ($spacing-44 - $spacing-36) * 3;
 
 .search-artist--container {
@@ -85,8 +86,11 @@ $search-bar-height: ($spacing-44 - $spacing-36) * 3;
   border-bottom-color: $gray1;
 }
 
-.search-artist--dropdown--element:hover .search-artist--dropdown--element-text {
-  color: $gray4;
+.search-artist--dropdown--element:hover {
+  
+  .search-artist--dropdown--element-text {
+    color: $gray4;
+  }
 }
 
 .search-artist--dropdown--elements {

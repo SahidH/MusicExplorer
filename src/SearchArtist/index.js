@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.scss";
+
 const SearchArtist = ({ artists, onSearchArtist, onArtistSelected }) => (
   <div className="search-artist--container">
     <input
@@ -27,4 +28,5 @@ const SearchArtist = ({ artists, onSearchArtist, onArtistSelected }) => (
     )}
   </div>
 );
+
 export default SearchArtist;

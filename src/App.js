@@ -123,4 +123,5 @@ function DeezerConnection(hasChanged) {
     store
   };
 }
+
 export default App;

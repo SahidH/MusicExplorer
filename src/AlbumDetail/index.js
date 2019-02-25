@@ -2,17 +2,18 @@ import React from "react";
 import "./index.scss";
 import Album from "../Album";
 import Loader from "../Loader";
+
 const pad = number => (number < 10 ? "0" : "") + number;
+
 const formatTime = time => {
   const minutes = Math.floor(time / 60);
   const seconds = time - minutes * 60;
   return `${pad(minutes)}:${pad(seconds)}`;
 };
+
 const AlbumDetail = ({ album }) => (
   <div className="album-detail">
-    <p className="album-detail__track-list__title">
-      {album.title}
-    </p>
+    <p className="album-detail__track-list__title">{album.title}</p>
     <div className="album-detail__track-list">
       <Album
         displayTitle={false}
@@ -56,4 +57,5 @@ const AlbumDetail = ({ album }) => (
     </div>
   </div>
 );
+
 export default AlbumDetail;

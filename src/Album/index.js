@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./index.scss";
 import Loader from "../Loader";
+
 class Album extends Component {
   constructor(props) {
     super(props);
@@ -8,9 +9,11 @@ class Album extends Component {
       loading: true
     };
   }
+
   componentDidMount() {
     this.loadImage();
   }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (
       prevProps.album !== this.props.album ||
@@ -19,10 +22,12 @@ class Album extends Component {
       this.loadImage();
     }
   }
+
   getImageUrl() {
     const { album, size = "medium" } = this.props;
     return album[`cover_${size}`];
   }
+
   loadImage() {
     this.setState({ loading: true });
     const imgTag = document.createElement("img");
@@ -30,6 +35,7 @@ class Album extends Component {
     imgTag.src = src;
     imgTag.onload = () => this.setState({ loading: false });
   }
+
   render() {
     const {
       album,
@@ -55,9 +61,7 @@ class Album extends Component {
             />
           )}
         </div>
-        {displayTitle && (
-          <p className="album-cover__title">{album.title}</p>
-        )}
+        {displayTitle && <p className="album-cover__title">{album.title}</p>}
       </div>
     );
   }
