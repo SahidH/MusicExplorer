@@ -3,7 +3,7 @@ import "./index.scss";
 import Album from "../Album";
 import Loader from "../Loader";
 
-const pad = number => (number < 10 ? "0" : "") + number;
+const pad = number => `${number < 10 ? "0" : ""}${number}`;
 
 const formatTime = time => {
   const minutes = Math.floor(time / 60);
