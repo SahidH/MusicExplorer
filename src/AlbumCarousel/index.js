@@ -3,10 +3,10 @@ import "./index.scss";
 import Album from "../Album";
 import Loader from "../Loader";
 
-const AlbumCarousel = ({ albums, selectedAlbum, onAlbumSelected }) => (
+const AlbumCarousel = ({ albums, selectedAlbum, onAlbumSelected, loading }) => (
   <div className="albums-scroll">
-    {albums.loading && <Loader />}
-    {!albums.loading && (
+    {loading && <Loader />}
+    {!loading && (
       <div className="albums-scroll__container">
         {albums.map((album, i) => (
           <Album

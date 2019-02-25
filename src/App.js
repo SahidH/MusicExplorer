@@ -4,77 +4,69 @@ import SearchArtist from "./SearchArtist";
 import AlbumCarousel from "./AlbumCarousel";
 import AlbumDetail from "./AlbumDetail";
 import DeezerStore from "./DeezerStore";
+import { selectArtist, selectAlbum, queryArtist } from "./actions";
+import { connect } from "react-redux";
+
 class App extends Component {
   constructor() {
     super();
     this.onSearchArtist = this.onSearchArtist.bind(this);
     this.onArtistSelected = this.onArtistSelected.bind(this);
     this.onAlbumSelected = this.onAlbumSelected.bind(this);
-    this.hasChanged = this.hasChanged.bind(this);
-    this.hasError = this.hasError.bind(this);
-    this.DeezerConnection = DeezerStore({
-      hasChanged: this.hasChanged,
-      hasError: this.hasError
-    });
-    this.state = {
-      store: null,
-      error: null,
-      selectedAlbum: null,
-      selectedArtist: null,
-      artists: []
-    };
-  }
-
-  hasChanged({ store }) {
-    this.setState({ store });
-  }
-
-  hasError({ error }) {
-    this.setState({ error });
   }
 
   onSearchArtist(e) {
     const {
       target: { value }
     } = e;
-    this.DeezerConnection.search({ connection: "artist", q: value })
-      .then(artists => this.setState({ artists }))
-      .catch(error => console.error("error", error));
+    this.props.dispatch(queryArtist({ searchArtist: value }));
   }
 
   onArtistSelected(artist) {
-    this.setState({ selectedArtist: artist, artists: [] });
+    this.props.dispatch(selectArtist({ artist }));
   }
 
   onAlbumSelected(album) {
-    this.setState({ selectedAlbum: album });
+    this.props.dispatch(selectAlbum({ album }));
   }
 
   render() {
+    const {
+      selected: { album: selectedAlbum, artist: selectedArtist },
+      artistStore,
+      albumStore,
+      trackStore
+    } = this.props;
     return (
       <div className="app">
         <div className="app-container">
           <SearchArtist
-            artists={this.state.artists}
+            artists={artistStore.artists}
+            loading={artistStore.loading}
             onSearchArtist={this.onSearchArtist}
             onArtistSelected={this.onArtistSelected}
           />
 
-          {this.state.selectedArtist && (
+          {selectedArtist && (
             <div className="search-results">
               <p className="search-results__title">
-                Search results for "{this.state.selectedArtist.name}"
+                Search results for "{selectedArtist.name}"
               </p>
               <div className="search-results__albums">
                 <p className="search-results__albums__title">Albums</p>
                 <AlbumCarousel
-                  albums={this.state.selectedArtist.albums}
-                  selectedAlbum={this.state.selectedAlbum}
+                  albums={albumStore.albums}
+                  loading={albumStore.loading}
+                  selectedAlbum={selectedAlbum}
                   onAlbumSelected={this.onAlbumSelected}
                 />
               </div>
-              {this.state.selectedAlbum && (
-                <AlbumDetail album={this.state.selectedAlbum} />
+              {selectedAlbum && (
+                <AlbumDetail
+                  album={selectedAlbum}
+                  tracks={trackStore.tracks}
+                  loading={trackStore.loading}
+                />
               )}
             </div>
           )}
@@ -84,4 +76,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  const { trackStore, albumStore, artistStore, selected } = state;
+
+  return {
+    artistStore,
+    trackStore,
+    albumStore,
+    selected
+  };
+};
+
+export default connect(mapStateToProps)(App);
