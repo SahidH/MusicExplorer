@@ -12,7 +12,7 @@ import {
 } from "../actions";
 
 function selected(
-  state = { artist: null, album: null, searchArtist:null },
+  state = { artist: null, album: null, searchArtist: null },
   action
 ) {
   switch (action.type) {
@@ -60,7 +60,7 @@ function artistStore(
     case RECEIVE_ALBUMS:
       return {
         artists: []
-      }
+      };
     default:
       return state;
   }
