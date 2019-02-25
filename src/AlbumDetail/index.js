@@ -11,7 +11,7 @@ const formatTime = time => {
   return `${pad(minutes)}:${pad(seconds)}`;
 };
 
-const AlbumDetail = ({ album }) => (
+const AlbumDetail = ({ album, tracks, loading }) => (
   <div className="album-detail">
     <p className="album-detail__track-list__title">{album.title}</p>
     <div className="album-detail__track-list">
@@ -31,12 +31,12 @@ const AlbumDetail = ({ album }) => (
             Released
           </p>
         </div>
-        {album.tracks.loading && (
+        {loading && (
           <div className="table__row">
             <Loader />
           </div>
         )}
-        {album.tracks.map((track, i) => (
+        {tracks.map((track, i) => (
           <div className="table__row" key={`track::${track.title}::${i}`}>
             <p className="offset-table__element table__row__number">{i + 1}</p>
             <p className="offset-table__element table__row__title">
