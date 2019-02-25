@@ -42,7 +42,7 @@ $search-bar-height: ($spacing-44 - $spacing-36) * 3;
 //Dropdown
 .search-artist--dropdown {
   position: absolute;
-  width: 100%;
+  width: calc(100% - 195px);
   top: $spacing-26 * 2 + ($search-bar-height + $spacing-36);
   background-color: $gray2;
   font-size: $font-size-23;
@@ -97,4 +97,24 @@ $search-bar-height: ($spacing-44 - $spacing-36) * 3;
   max-height: 40vh;
   padding: 0 $spacing-44 $spacing-51 $spacing-44;
   overflow: scroll;
+}
+
+.search-artist--button {
+  display: flex;
+  width: $spacing-120*2;
+  margin-left: $spacing-85;
+  color: $gray1;
+  background-color: $blue;
+  border-radius: 0.1em;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+
+  :hover {
+    color: $gray3;
+  }
 }
