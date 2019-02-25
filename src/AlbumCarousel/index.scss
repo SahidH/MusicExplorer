@@ -9,6 +9,7 @@ $margin-cover: $spacing-63;
 
 .albums-scroll__container {
   width: 100%;
+  padding-top: 5px;
   padding-bottom: 1em;
   overflow-x: auto;
   overflow-y: hidden;
