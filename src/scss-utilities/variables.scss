@@ -4,14 +4,24 @@ $gray3: #b5b5b5;
 $gray4: #f6f6f6;
 $blue: #01ffff;
 
-$size-2: 0.36em;
-$size-1: 0.6em;
-$size1: 1em;
-$size2: 1.6em;
-$size2: 3.2em;
+$proportion: 0.6px;
 
+$font-size-23: 23*$proportion;
+$font-size-28: 28*$proportion;
+$font-size-33: 33*$proportion;
+$font-size-36: 36*$proportion;
 
-$font-size1: 1.1em;
-$font-size2: 1em;
-$font-size3: 0.98em;
-$font-size4: 1.6em;
+$margin-width: 2*$proportion;
+
+$spacing-26: 26*$proportion;
+$spacing-30: 30*$proportion;
+$spacing-36: 36*$proportion;
+$spacing-44: 44*$proportion;
+$spacing-51: 51*$proportion;
+$spacing-56: 56*$proportion;
+$spacing-63: 63*$proportion;
+$spacing-85: 85*$proportion;
+$spacing-100: 100*$proportion;
+$spacing-120: 120*$proportion;
+$spacing-150: 150*$proportion;
+$spacing-300: 300*$proportion;

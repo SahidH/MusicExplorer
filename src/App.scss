@@ -8,18 +8,32 @@
   background-color: $gray1;
   color: $gray4;
 }
+
 .app-container {
-  padding: 3em;
+  padding: $spacing-100;
 }
 
 .title {
-  font-weight: 600;
-  font-size: 1.5em;
+  font-size: $font-size-36;
+}
+
+.bold {
   font-weight: 600;
 }
+
 .title-2 {
-  font-size: $font-size4;
+  font-size: $font-size-36;
 }
-.blue-font {
+
+.font-blue {
   color: $blue;
+}
+.search-results__albums__title {
+  padding: $spacing-44 0 $spacing-36 0;
+}
+.search-results__title {
+  padding: $spacing-100 0 $spacing-26 0;
+  border-bottom-color: $gray2;
+  border-bottom-style: solid;
+  border-bottom-width: $margin-width;
 }

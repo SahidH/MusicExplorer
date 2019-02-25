@@ -1,18 +1,19 @@
 @import "../scss-utilities/variables";
+$cover-size: $spacing-300;
 .album-cover {
   display: flex;
   flex-direction: column;
   text-align: center;
-  min-width: 10em;
-  min-height: 10em;
-  max-width: 10em;
-  min-height: 10em;
+  min-width: $cover-size;
+  min-height: $cover-size;
+  max-width: $cover-size;
+  min-height: $cover-size;
 }
 
 .album-cover__image {
   transition: transform 0.3s;
-  width: 10em;
-  height: 10em;
+  width: $cover-size;
+  height: $cover-size;
   background-color: $gray1;
   img {
     width: 100%;
@@ -22,19 +23,17 @@
 
 .album-cover--selected {
   .album-cover__image {
-    transform: scale3d(1.1, 1.1, 1.1);
     box-shadow: 0 4px 4px black;
   }
 }
 
 .album-cover__title {
+  padding-top: $font-size-23;
+  padding-bottom: $font-size-23;
+  font-size: $font-size-23;
+  color: $blue;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.album-cover__title {
-  color: $blue;
-  font-size: $font-size3;
 }

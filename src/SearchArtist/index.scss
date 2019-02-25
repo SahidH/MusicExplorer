@@ -1,5 +1,5 @@
 @import "../scss-utilities/variables";
-
+$search-bar-height: ($spacing-44 - $spacing-36)*3;
 .search-artist--container {
   position: relative;
   display: flex;
@@ -10,9 +10,9 @@
 
 //User Input
 .search-artist--input {
-  font-size: $font-size1;
-  padding: $size-1;
-  height: 2em;
+  font-size: $font-size-28;
+  padding: $spacing-36;
+  height: $search-bar-height;
   background-color: $gray2;
   border: none;
   color: $gray3;
@@ -21,7 +21,10 @@
 }
 .search-artist--input:focus {
   outline: none;
-  box-shadow: 0 1px 2px black;
+  box-shadow: 0px 1px 1px black;
+}
+.search-artist--input[type=text]{
+  color: $gray3; 
 }
 .search-artist--input::placeholder {
   color: $gray3;
@@ -33,12 +36,12 @@
 .search-artist--dropdown {
   position: absolute;
   z-index: 100;
-  top: 4em;
+  top: $spacing-26*2 + ($search-bar-height + $spacing-36);
   background-color: $gray2;
-  padding: $size-1;
   border-radius: 0.1em;
-  width: 40%;
-  box-shadow: 3px 2px 10px black;
+  width: 100%;
+  font-size: $font-size-23;
+  box-shadow: 0px 1px 1px black;
 }
 
 //Dropdown Arrow
@@ -51,14 +54,13 @@
   position: absolute;
   border-color: rgba(194, 225, 245, 0);
   border-bottom-color: $gray2;
-  border-width: 0.4em;
-  margin-left: 0.4em;
+  border-width: $spacing-26*0.5;
+  margin-left: $font-size-36;
 }
 
 .search-artist--dropdown--title {
   margin: 0;
-  padding-bottom: $size-1;
-  font-size: $font-size2;
+  padding: $spacing-56 $spacing-36 $spacing-30 $spacing-36;
 }
 
 //Dropdown elements
@@ -67,15 +69,14 @@
 }
 
 .search-artist--dropdown--element-text {
-  font-size: $font-size3;
   padding: 0;
   margin: 0;
 }
 
 .search-artist--dropdown--element {
-  padding: 0.5em 0 0.5em 1em;
+  padding: $font-size-36;
   border-bottom-style: solid;
-  border-bottom-width: 0.09em;
+  border-bottom-width: $margin-width;
   border-bottom-color: $gray1;
 }
 
@@ -86,4 +87,5 @@
 .search-artist--dropdown--elements {
   max-height: 40vh;
   overflow: scroll;
+  padding: 0 $spacing-44  $spacing-51 $spacing-44;
 }

@@ -16,6 +16,7 @@ class App extends Component {
       artists: []
     };
   }
+  
   loop() {
     this.setState({ thick: !this.state.thick });
   }
@@ -49,12 +50,12 @@ class App extends Component {
           />
 
           {this.state.selectedArtist && (
-            <div className="artist-detail--container">
-              <p className="title-2 artist-detail--name">
+            <div className="search-results">
+              <p className="search-results__title title bold">
                 Search results for "{this.state.selectedArtist.name}"
               </p>
-              <div className="artist-detail--albums">
-                <p className="title blue-font">Albums</p>
+              <div className="search-results__albums">
+                <p className="search-results__albums__title title font-blue bold">Albums</p>
                 <AlbumCarousel
                   albums={this.state.selectedArtist.albums}
                   selectedAlbum={this.state.selectedAlbum}
@@ -99,9 +100,9 @@ function DeezerConnection(hasChanged) {
               setTimeout(() => hasChanged(store));
             });
         }
-        const some = [];
-        some.loading = true;
-        obj[prop] = some;
+        const buffer = [];
+        buffer.loading = true;
+        obj[prop] = buffer;
         return obj[prop];
       }
     });

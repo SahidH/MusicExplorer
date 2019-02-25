@@ -49,7 +49,7 @@ class Album extends Component {
         <div className="album-cover__image">
           {!loading && <img title={album.title} src={this.getImageUrl()} />}
         </div>
-        {displayTitle && <p className="album-cover__title">{album.title}</p>}
+        {displayTitle && <p className="album-cover__title bold">{album.title}</p>}
       </div>
     );
   }
