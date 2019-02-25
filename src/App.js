@@ -42,12 +42,14 @@ class App extends Component {
     this.DeezerConnection.search({ connection: "artist", q: artist })
       .then(
         ({ result, q }) =>
+          //only pick the request of the current artist
           q === this.artist && this.setState({ artists: result })
       )
       .catch(error => console.error("error", error));
   }
 
   onArtistSelected(artist) {
+    //once clicked on an artist empty the results to make the dropdown disappear
     this.setState({ selectedArtist: artist, artists: [] });
   }
 
