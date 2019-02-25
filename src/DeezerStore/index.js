@@ -10,16 +10,21 @@ const DeezerStore = ({ hasChanged, hasError }) => {
 
   const generateModel = data => {
     const { id, type } = data;
+    //proxy object to execute operations when accessing properties
     store[generateKey({ id, type })] = new Proxy(data, {
       get: (obj, prop) => {
+        //if property is defined just return it
         if (obj[prop]) {
           return obj[prop];
         }
         if (!obj[prop] || !obj[prop].loading) {
+          //try to get the property requested from the api, it is implicit that will be a collection
           fetch(`/${obj.type}/${obj.id}/${prop}/`)
             .then(response => response.json())
             .then(({ data, total }) => {
+              //generate same proxy model for the just received data and pass the references
               obj[prop] = data.map(generateModel);
+              //required to execute another render loop and allow shallow comparison
               setTimeout(onChange);
               return obj[prop];
             })
@@ -29,10 +34,11 @@ const DeezerStore = ({ hasChanged, hasError }) => {
               setTimeout(onError);
             });
         }
+        //dummy class to allow the property to behave as Array
         const buffer = [];
         buffer.loading = true;
         obj[prop] = buffer;
-
+        //return the data of the property
         return obj[prop];
       }
     });
@@ -44,7 +50,7 @@ const DeezerStore = ({ hasChanged, hasError }) => {
     fetch(`/search/${connection}/?q=${q}`)
       .then(response => response.json())
       .then(response => {
-        const { data, total, next } = response;
+        const { data } = response;
         return { result: data.map(generateModel), q };
       });
 
