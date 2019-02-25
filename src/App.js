@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   onArtistSelected(artist) {
-    //once clicked on an artist empty the results to make the dropdown disappear
+    //once clicked on an artist, empty the results to make the dropdown disappear
     this.setState({ selectedArtist: artist, artists: [] });
   }
 
