@@ -1,19 +1,24 @@
 @import "../scss-utilities/variables";
 $margin-cover: $spacing-63;
 .albums-scroll {
-  max-height: $spacing-300 + $font-size-23*3;
   height: $spacing-300 + $font-size-23*3;
-}
-.albums-scroll__container {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 1em;
+  max-height: $spacing-300 + $font-size-23*3;
 }
 
 .albums-scroll__container {
-  display: flex;
+  width: 100%;
+  padding-bottom: 1em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.albums-scroll__container {
   position: absolute;
+  display: flex;
+  max-height: $spacing-300 + $font-size-23*3;
+  height: $spacing-300 + $font-size-23*3;
+  justify-content: flex-start;
+  align-content: flex-start;
   left: 0;
   flex-direction: column;
   flex-wrap: wrap;
@@ -21,17 +26,18 @@ $margin-cover: $spacing-63;
   overflow: auto;
   transition: all 0.2s;
   overflow: auto;
-  justify-content: flex-start;
-  max-height: $spacing-300 + $font-size-23*3;
-  height: $spacing-300 + $font-size-23*3;
+
   .album-cover:first-child{
     margin-left: $spacing-100;
   }
+
   .album-cover:last-child{
     padding-right: $spacing-100;
   }
+
   .album-cover {
     margin-left: $margin-cover;
     margin-right: $margin-cover;
+    cursor: pointer;
   }
 }

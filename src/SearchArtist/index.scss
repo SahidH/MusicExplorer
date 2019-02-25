@@ -1,5 +1,6 @@
 @import "../scss-utilities/variables";
-$search-bar-height: ($spacing-44 - $spacing-36)*3;
+$search-bar-height: ($spacing-44 - $spacing-36) * 3;
+
 .search-artist--container {
   position: relative;
   display: flex;
@@ -10,52 +11,56 @@ $search-bar-height: ($spacing-44 - $spacing-36)*3;
 
 //User Input
 .search-artist--input {
-  font-size: $font-size-28;
-  padding: $spacing-36;
   height: $search-bar-height;
-  background-color: $gray2;
-  border: none;
-  color: $gray3;
-  border-radius: 0.1em;
+  padding: $spacing-36;
   flex-grow: 9;
+  color: $gray3;
+  border: none;
+  background-color: $gray2;
+  border-radius: 0.1em;
+  font-size: $font-size-28;
 }
+
 .search-artist--input:focus {
   outline: none;
   box-shadow: 0px 1px 1px black;
 }
-.search-artist--input[type=text]{
-  color: $gray3; 
+
+.search-artist--input[type="text"] {
+  color: $gray3;
 }
+
 .search-artist--input::placeholder {
   color: $gray3;
 }
+
 .search-artist--search-button {
   width: 5em;
 }
+
 //Dropdown
 .search-artist--dropdown {
   position: absolute;
-  z-index: 100;
-  top: $spacing-26*2 + ($search-bar-height + $spacing-36);
-  background-color: $gray2;
-  border-radius: 0.1em;
   width: 100%;
+  top: $spacing-26 * 2 + ($search-bar-height + $spacing-36);
+  background-color: $gray2;
   font-size: $font-size-23;
+  border-radius: 0.1em;
   box-shadow: 0px 1px 1px black;
+  z-index: 100;
 }
 
 //Dropdown Arrow
 .search-artist--dropdown:before {
-  bottom: 100%;
-  border: solid transparent;
+  position: absolute;
   content: " ";
   height: 0;
   width: 0;
-  position: absolute;
-  border-color: rgba(194, 225, 245, 0);
-  border-bottom-color: $gray2;
-  border-width: $spacing-26*0.5;
+  bottom: 100%;
   margin-left: $font-size-36;
+  border: solid transparent;
+  border-width: $spacing-26 * 0.5;
+  border-bottom-color: $gray2;
 }
 
 .search-artist--dropdown--title {
@@ -69,8 +74,8 @@ $search-bar-height: ($spacing-44 - $spacing-36)*3;
 }
 
 .search-artist--dropdown--element-text {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .search-artist--dropdown--element {
@@ -86,6 +91,6 @@ $search-bar-height: ($spacing-44 - $spacing-36)*3;
 
 .search-artist--dropdown--elements {
   max-height: 40vh;
+  padding: 0 $spacing-44 $spacing-51 $spacing-44;
   overflow: scroll;
-  padding: 0 $spacing-44  $spacing-51 $spacing-44;
 }

@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./index.scss";
 import Album from "../Album";
 import Loader from "../Loader";
-const proportion = 0.6;
 const AlbumCarousel = ({ albums, selectedAlbum, onAlbumSelected }) => (
   <div className="albums-scroll">
     {albums.loading && <Loader />}
@@ -10,8 +9,9 @@ const AlbumCarousel = ({ albums, selectedAlbum, onAlbumSelected }) => (
       <div
         className="albums-scroll__container"
       >
-        {albums.map(album => (
+        {albums.map((album, i) => (
           <Album
+            key={`albums-scroll::${i}`}
             album={album}
             onAlbumSelected={onAlbumSelected}
             selectedAlbum={selectedAlbum}

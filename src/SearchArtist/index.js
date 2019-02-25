@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./index.scss";
 const SearchArtist = ({ artists, onSearchArtist, onArtistSelected }) => (
   <div className="search-artist--container">
@@ -13,6 +13,7 @@ const SearchArtist = ({ artists, onSearchArtist, onArtistSelected }) => (
         <div className="search-artist--dropdown--elements">
           {artists.map(artist => (
             <div
+              key={`search-artist--dropdown::${artist.name}`}
               className="search-artist--dropdown--element"
               onClick={() => onArtistSelected(artist)}
             >

@@ -1,71 +1,85 @@
 @import "../scss-utilities/variables";
 .album-detail {
   position: relative;
-  font-size: $font-size-23;
   margin: 0 -$spacing-26 0 -$spacing-26;
+  font-size: $font-size-23;
 }
+
 .album-detail__track-list {
   display: flex;
   flex-direction: row;
   margin-top: $spacing-300*0.7;
+
   .album-cover {
-    position: absolute;
     position: absolute;
     left: $spacing-26;
     top: -$spacing-300*0.3;
   }
 }
+
 .offset-table {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
   .table__row:last-child {
-    padding-bottom: 2.56em;
+    padding-bottom: $spacing-56;
+
     .offset-table__element {
       border-style: none;
     }
+
     .offset-table__element::after {
       content: unset;
     }
   }
 }
+
 .album-detail__track-list__title {
   position: absolute;
+  display: block;
   left: $spacing-300 + $spacing-26 + $spacing-36 - 2;
   top: -$spacing-300*0.2;
-  display: block;
+  color: $blue;
+  font-weight: 600;
   font-size: $font-size-33;
 }
+
 .table__row.table__row__headers {
   background-color: transparent;
   font-weight: 600;
 }
+
 .table__row {
   display: flex;
   padding-left: $spacing-36 * 10;
   background-color: $gray2;
 }
+
 .offset-table__element {
+  position: relative;
   padding-bottom: $font-size-33;
   padding-top: $font-size-33;
   margin-bottom: 0em;
-  position: relative;
 }
+
 .offset-table__element:not(:first-child) {
-  border-bottom-color: #1c1c1c;
+  border-bottom-color: $gray1;
   border-width: 0 0 1px 0;
   border-style: solid;
 }
+
 .offset-table__element:not(:first-child)::after {
   content: " ";
   position: absolute;
   left: -1.3em;
   bottom: -1px;
-  border-bottom: #1c1c1c;
+  border-bottom: $gray1;
   border-width: 0 0 1px 0;
   border-style: solid;
   width: 1.3em;
 }
+
 .table__row__number {
   width: 2.56em;
 }

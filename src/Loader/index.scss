@@ -1,20 +1,21 @@
 @import "../scss-utilities/variables";
 .loader {
+  position: relative;
   height: 4px;
   width: 100%;
-  position: relative;
+  background-color: $gray1;
+  opacity: 0.9;
   overflow: hidden;
-  background-color: $gray2;
 }
 .loader:before {
-  display: block;
-  position: absolute;
   content: "";
-  left: -200px;
+  position: absolute;
+  display: block;
   width: 200px;
   height: 4px;
-  background-color: $gray4;
-  animation: loading 0.6s linear infinite;
+  left: -200px;
+  background-color: $gray2;
+  animation: loading 1s linear infinite;
 }
 
 @keyframes loading {

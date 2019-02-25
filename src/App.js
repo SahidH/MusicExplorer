@@ -3,6 +3,7 @@ import "./App.scss";
 import SearchArtist from "./SearchArtist";
 import AlbumCarousel from "./AlbumCarousel";
 import AlbumDetail from "./AlbumDetail";
+
 class App extends Component {
   constructor() {
     super();
@@ -16,7 +17,7 @@ class App extends Component {
       artists: []
     };
   }
-  
+
   loop() {
     this.setState({ thick: !this.state.thick });
   }
@@ -51,11 +52,11 @@ class App extends Component {
 
           {this.state.selectedArtist && (
             <div className="search-results">
-              <p className="search-results__title title bold">
+              <p className="search-results__title">
                 Search results for "{this.state.selectedArtist.name}"
               </p>
               <div className="search-results__albums">
-                <p className="search-results__albums__title title font-blue bold">Albums</p>
+                <p className="search-results__albums__title">Albums</p>
                 <AlbumCarousel
                   albums={this.state.selectedArtist.albums}
                   selectedAlbum={this.state.selectedAlbum}

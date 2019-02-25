@@ -3,18 +3,19 @@ $cover-size: $spacing-300;
 .album-cover {
   display: flex;
   flex-direction: column;
-  text-align: center;
   min-width: $cover-size;
-  min-height: $cover-size;
   max-width: $cover-size;
   min-height: $cover-size;
+  max-height: $cover-size;
+  text-align: center;
 }
 
 .album-cover__image {
-  transition: transform 0.3s;
   width: $cover-size;
   height: $cover-size;
   background-color: $gray1;
+  transition: transform 0.3s;
+
   img {
     width: 100%;
     height: 100%;
@@ -22,17 +23,19 @@ $cover-size: $spacing-300;
 }
 
 .album-cover--selected {
+  
   .album-cover__image {
     box-shadow: 0 4px 4px black;
   }
 }
 
 .album-cover__title {
+  width: 100%;
   padding-top: $font-size-23;
   padding-bottom: $font-size-23;
-  font-size: $font-size-23;
   color: $blue;
-  width: 100%;
+  font-weight: 600;
+  font-size: $font-size-23;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

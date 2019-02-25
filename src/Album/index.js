@@ -47,9 +47,17 @@ class Album extends Component {
       >
         {loading && <Loader />}
         <div className="album-cover__image">
-          {!loading && <img title={album.title} src={this.getImageUrl()} />}
+          {!loading && (
+            <img
+              title={album.title}
+              alt={album.title}
+              src={this.getImageUrl()}
+            />
+          )}
         </div>
-        {displayTitle && <p className="album-cover__title bold">{album.title}</p>}
+        {displayTitle && (
+          <p className="album-cover__title">{album.title}</p>
+        )}
       </div>
     );
   }

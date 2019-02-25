@@ -13,27 +13,17 @@
   padding: $spacing-100;
 }
 
-.title {
-  font-size: $font-size-36;
-}
-
-.bold {
-  font-weight: 600;
-}
-
-.title-2 {
-  font-size: $font-size-36;
-}
-
-.font-blue {
-  color: $blue;
-}
 .search-results__albums__title {
   padding: $spacing-44 0 $spacing-36 0;
+  color: $blue;
+  font-weight: 600;
+  font-size: $font-size-36;
 }
 .search-results__title {
   padding: $spacing-100 0 $spacing-26 0;
   border-bottom-color: $gray2;
   border-bottom-style: solid;
   border-bottom-width: $margin-width;
+  font-weight: 600;
+  font-size: $font-size-36;
 }

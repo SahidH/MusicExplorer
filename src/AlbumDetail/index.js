@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./index.scss";
 import Album from "../Album";
 import Loader from "../Loader";
@@ -10,7 +10,7 @@ const formatTime = time => {
 };
 const AlbumDetail = ({ album }) => (
   <div className="album-detail">
-    <p className="album-detail__track-list__title title bold font-blue">
+    <p className="album-detail__track-list__title">
       {album.title}
     </p>
     <div className="album-detail__track-list">
@@ -20,7 +20,6 @@ const AlbumDetail = ({ album }) => (
         album={album}
         selectedAlbum={album}
       />
-
       <div className="offset-table">
         <div className="table__row table__row__headers">
           <p className="offset-table__element table__row__number">#</p>
@@ -37,7 +36,7 @@ const AlbumDetail = ({ album }) => (
           </div>
         )}
         {album.tracks.map((track, i) => (
-          <div className="table__row">
+          <div className="table__row" key={`track::${track.title}::${i}`}>
             <p className="offset-table__element table__row__number">{i + 1}</p>
             <p className="offset-table__element table__row__title">
               {track.title}
