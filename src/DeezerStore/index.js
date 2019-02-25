@@ -31,9 +31,11 @@ const DeezerStore = ({ hasChanged }) => {
         const buffer = [];
         buffer.loading = true;
         obj[prop] = buffer;
+
         return obj[prop];
       }
     });
+
     return store[generateKey({ id, type })];
   };
 
@@ -42,6 +44,7 @@ const DeezerStore = ({ hasChanged }) => {
       .then(response => response.json())
       .then(response => {
         const { data, total, next } = response;
+        
         return data.map(generateModel);
       });
 

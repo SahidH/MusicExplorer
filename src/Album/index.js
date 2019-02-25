@@ -25,6 +25,7 @@ class Album extends Component {
 
   getImageUrl() {
     const { album, size = "medium" } = this.props;
+
     return album[`cover_${size}`];
   }
 
@@ -44,6 +45,7 @@ class Album extends Component {
       displayTitle = true
     } = this.props;
     const { loading } = this.state;
+    
     return (
       <div
         className={`album-cover ${
