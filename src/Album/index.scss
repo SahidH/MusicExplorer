@@ -6,8 +6,9 @@ $cover-size: $spacing-300;
   flex-direction: column;
   min-width: $cover-size;
   max-width: $cover-size;
-  min-height: $cover-size + $font-size-23*3;
-  max-height: $cover-size + $font-size-23*3;
+  margin-top: 5px;
+  min-height: $cover-size + $font-size-23 * 3;
+  max-height: $cover-size + $font-size-23 * 3;
   text-align: center;
 }
 
@@ -15,8 +16,11 @@ $cover-size: $spacing-300;
   width: $cover-size;
   height: $cover-size;
   background-color: $gray1;
-  transition: transform 0.3s;
-
+  transition: transform 0.15s;
+  transform: scale3d(1,1,1);
+  &:hover {
+    transform: scale3d(1.03,1.03,1.03);
+  }
   img {
     width: 100%;
     height: 100%;
@@ -24,13 +28,12 @@ $cover-size: $spacing-300;
 }
 
 .album-cover--selected {
-  
   .album-cover__title {
     border-bottom: $gray2;
     border-width: 0 0 1px 0;
     border-style: solid;
   }
-  
+
   .album-cover__image {
     box-shadow: 0 4px 4px black;
   }
