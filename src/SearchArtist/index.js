@@ -12,9 +12,9 @@ const SearchArtist = ({ artists, onSearchArtist, onArtistSelected }) => (
       <div className="search-artist--dropdown">
         <p className="search-artist--dropdown--title">Search Results</p>
         <div className="search-artist--dropdown--elements">
-          {artists.map(artist => (
+          {artists.map((artist, i) => (
             <div
-              key={`search-artist--dropdown::${artist.name}`}
+              key={`search-artist--dropdown::${artist.name}::${i}`}
               className="search-artist--dropdown--element"
               onClick={() => onArtistSelected(artist)}
             >
