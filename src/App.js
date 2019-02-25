@@ -3,31 +3,32 @@ import "./App.scss";
 import SearchArtist from "./SearchArtist";
 import AlbumCarousel from "./AlbumCarousel";
 import AlbumDetail from "./AlbumDetail";
-
+import DeezerStore from "./DeezerStore";
 class App extends Component {
   constructor() {
     super();
-    this.loop = this.loop.bind(this);
-    this.myDeezerConnection = DeezerConnection(this.loop);
+    this.hasChanged = this.hasChanged.bind(this);
     this.onSearchArtist = this.onSearchArtist.bind(this);
     this.onArtistSelected = this.onArtistSelected.bind(this);
     this.onAlbumSelected = this.onAlbumSelected.bind(this);
+    this.DeezerConnection = DeezerStore({ hasChanged: this.hasChanged });
     this.state = {
-      thick: false,
+      store: null,
+      selectedAlbum: null,
+      selectedArtist: null,
       artists: []
     };
   }
 
-  loop() {
-    this.setState({ thick: !this.state.thick });
+  hasChanged({ store }) {
+    this.setState({ store });
   }
 
   onSearchArtist(e) {
     const {
       target: { value }
     } = e;
-    this.myDeezerConnection
-      .search({ connection: "artist", q: value })
+    this.DeezerConnection.search({ connection: "artist", q: value })
       .then(artists => this.setState({ artists }))
       .catch(error => console.error("error", error));
   }
@@ -72,56 +73,6 @@ class App extends Component {
       </div>
     );
   }
-}
-
-function DeezerConnection(hasChanged) {
-  const store = {};
-  function generateKey({ type, id }) {
-    return `${type}:${id}`;
-  }
-
-  function generateModel(data) {
-    const { id, type } = data;
-    store[generateKey({ id, type })] = new Proxy(data, {
-      get: (obj, prop) => {
-        if (obj[prop]) {
-          return obj[prop];
-        }
-        if (!obj[prop] || !obj[prop].loading) {
-          fetch(`/${obj.type}/${obj.id}/${prop}/`)
-            .then(response => response.json())
-            .then(({ data, total }) => {
-              obj[prop] = data.map(generateModel);
-              setTimeout(() => hasChanged(store));
-              return obj[prop];
-            })
-            .catch(error => {
-              obj[prop].loading = false;
-              obj[prop].error = error;
-              setTimeout(() => hasChanged(store));
-            });
-        }
-        const buffer = [];
-        buffer.loading = true;
-        obj[prop] = buffer;
-        return obj[prop];
-      }
-    });
-    return store[generateKey({ id, type })];
-  }
-
-  const search = ({ connection, q }) =>
-    fetch(`/search/${connection}/?q=${q}`)
-      .then(response => response.json())
-      .then(response => {
-        const { data, total, next } = response;
-        return data.map(generateModel);
-      });
-
-  return {
-    search,
-    store
-  };
 }
 
 export default App;
