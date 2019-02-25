@@ -14,6 +14,7 @@ class SearchArtist extends Component {
       target: { value }
     } = e;
     this.lettersTyped = value;
+    this.props.onSearchArtist(value);
   }
 
   render() {
