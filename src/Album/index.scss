@@ -4,6 +4,10 @@ $cover-size: $spacing-300;
 .album-cover {
   display: flex;
   flex-direction: column;
+  min-width: $cover-size;
+  max-width: $cover-size;
+  min-height: $cover-size + $font-size-23;
+  max-height: $cover-size + $font-size-23;
   text-align: center;
 }
 
