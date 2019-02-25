@@ -6,8 +6,8 @@ $cover-size: $spacing-300;
   flex-direction: column;
   min-width: $cover-size;
   max-width: $cover-size;
-  min-height: $cover-size + $font-size-23;
-  max-height: $cover-size + $font-size-23;
+  min-height: $cover-size + $font-size-23*3;
+  max-height: $cover-size + $font-size-23*3;
   text-align: center;
 }
 
