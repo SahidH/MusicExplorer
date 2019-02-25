@@ -7,13 +7,18 @@ import DeezerStore from "./DeezerStore";
 class App extends Component {
   constructor() {
     super();
-    this.hasChanged = this.hasChanged.bind(this);
     this.onSearchArtist = this.onSearchArtist.bind(this);
     this.onArtistSelected = this.onArtistSelected.bind(this);
     this.onAlbumSelected = this.onAlbumSelected.bind(this);
-    this.DeezerConnection = DeezerStore({ hasChanged: this.hasChanged });
+    this.hasChanged = this.hasChanged.bind(this);
+    this.hasError = this.hasError.bind(this);
+    this.DeezerConnection = DeezerStore({
+      hasChanged: this.hasChanged,
+      hasError: this.hasError
+    });
     this.state = {
       store: null,
+      error: null,
       selectedAlbum: null,
       selectedArtist: null,
       artists: []
@@ -22,6 +27,10 @@ class App extends Component {
 
   hasChanged({ store }) {
     this.setState({ store });
+  }
+
+  hasError({ error }) {
+    this.setState({ error });
   }
 
   onSearchArtist(e) {
@@ -69,7 +78,6 @@ class App extends Component {
               )}
             </div>
           )}
-          
         </div>
       </div>
     );

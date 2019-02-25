@@ -1,4 +1,4 @@
-const DeezerStore = ({ hasChanged }) => {
+const DeezerStore = ({ hasChanged, hasError }) => {
   const store = {};
 
   const generateKey = ({ type, id }) => {
@@ -6,6 +6,7 @@ const DeezerStore = ({ hasChanged }) => {
   };
 
   const onChange = () => hasChanged({ store });
+  const onError = ({ error, type, id }) => hasError({ error, type, id });
 
   const generateModel = data => {
     const { id, type } = data;
@@ -25,7 +26,7 @@ const DeezerStore = ({ hasChanged }) => {
             .catch(error => {
               obj[prop].loading = false;
               obj[prop].error = error;
-              setTimeout(onChange);
+              setTimeout(onError);
             });
         }
         const buffer = [];
@@ -39,12 +40,12 @@ const DeezerStore = ({ hasChanged }) => {
     return store[generateKey({ id, type })];
   };
 
-  const search = ({ connection, q }) => 
+  const search = ({ connection, q }) =>
     fetch(`/search/${connection}/?q=${q}`)
       .then(response => response.json())
       .then(response => {
         const { data, total, next } = response;
-        
+
         return data.map(generateModel);
       });
 
