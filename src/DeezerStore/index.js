@@ -37,7 +37,7 @@ const DeezerStore = ({ hasChanged }) => {
     return store[generateKey({ id, type })];
   };
 
-  const search = ({ connection, q }) =>
+  const search = ({ connection, q }) => 
     fetch(`/search/${connection}/?q=${q}`)
       .then(response => response.json())
       .then(response => {
