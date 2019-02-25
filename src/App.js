@@ -15,11 +15,8 @@ class App extends Component {
     this.onAlbumSelected = this.onAlbumSelected.bind(this);
   }
 
-  onSearchArtist(e) {
-    const {
-      target: { value }
-    } = e;
-    this.props.dispatch(queryArtist({ searchArtist: value }));
+  onSearchArtist(searchArtist) {
+    this.props.dispatch(queryArtist({ searchArtist }));
   }
 
   onArtistSelected(artist) {
