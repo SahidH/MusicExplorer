@@ -17,9 +17,11 @@ $cover-size: $spacing-300;
   background-color: $gray1;
   transition: transform 0.15s;
   transform: scale3d(1,1,1);
+
   &:hover {
     transform: scale3d(1.03,1.03,1.03);
   }
+
   img {
     width: 100%;
     height: 100%;
@@ -27,6 +29,7 @@ $cover-size: $spacing-300;
 }
 
 .album-cover--selected {
+  
   .album-cover__title {
     border-bottom: $gray2;
     border-width: 0 0 1px 0;
