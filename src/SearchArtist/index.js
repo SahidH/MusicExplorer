@@ -6,7 +6,7 @@ const SearchArtist = ({ artists, onSearchArtist, onArtistSelected }) => (
     <input
       className="search-artist--input"
       placeholder="Search here"
-      onChange={onSearchArtist}
+      onChange={({ target: { value } }) => onSearchArtist(value)}
     />
     {!!artists.length && (
       <div className="search-artist--dropdown">

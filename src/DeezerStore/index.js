@@ -45,8 +45,7 @@ const DeezerStore = ({ hasChanged, hasError }) => {
       .then(response => response.json())
       .then(response => {
         const { data, total, next } = response;
-
-        return data.map(generateModel);
+        return { result: data.map(generateModel), q };
       });
 
   return {

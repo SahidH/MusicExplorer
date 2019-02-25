@@ -33,12 +33,17 @@ class App extends Component {
     this.setState({ error });
   }
 
-  onSearchArtist(e) {
-    const {
-      target: { value }
-    } = e;
-    this.DeezerConnection.search({ connection: "artist", q: value })
-      .then(artists => this.setState({ artists }))
+  onSearchArtist(artist) {
+    this.artist = artist;
+    if (!artist) {
+      this.setState({ artists: [] });
+      return;
+    }
+    this.DeezerConnection.search({ connection: "artist", q: artist })
+      .then(
+        ({ result, q }) =>
+          q === this.artist && this.setState({ artists: result })
+      )
       .catch(error => console.error("error", error));
   }
 
